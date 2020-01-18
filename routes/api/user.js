@@ -1,17 +1,11 @@
-const User = require('../models/user')
+const express = require('express')
+const router = express.Router()
+const usersCtrl = require('../../controllers/user')
 
-module.exports = {
-  signup
-}
+router.post('/signup', usersCtrl.signup)
+router.post('/login', usersCtrl.login)
 
-async function signup(req, res) {
-  const user = new User(req.body)
-  try {
-    await user.save()
-    res.json(user)
-  } catch (err) {
-    res.status(400).json(err)
-  }
-}
+
+module.exports = router
 
 

@@ -4,20 +4,20 @@ import { Link } from 'react-router-dom'
 
 class Questions extends Component {
     state = {
-        timeStarted:0,
+        timeStarted: new Date(),
         questChange: [],
-        timeByChange: [],
+        answerChange: [],
         answer: null,
     }
     handleAnswerBttn(val) {
-        let retAnswer = []
-        if(typeof this.state.answer == 'string'){
-
+        let retArry = this.state.answerChange
+        let newAnswer = {
+            oldLet: this.state.answer,
+            newLet: val,
+            timeChanged: new Date()
         }
-        else{
-            
-        }
-
+        arry.push(newAnswer)
+        this.setState({answerChange : retArry})
     }
     handleQuestBttn(val){
 
