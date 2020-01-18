@@ -7,4 +7,4 @@ const entrySchema = new mongoose.Schema({
     formId: {type:String},
 })
 
-module.exports = mongoose.model("entry" , entrySchema)
+module.exports = mongoose.model("Entry" , entrySchema)

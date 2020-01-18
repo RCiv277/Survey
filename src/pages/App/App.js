@@ -5,13 +5,7 @@ import NavBar from '../../components/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
-import tokenService from '../../utils/tokenService';
-
-
-
-
-
-
+import QuestionForm from '../../components/QuestionForm';
 
 class App extends Component {
     state = {
@@ -40,6 +34,15 @@ class App extends Component {
               
               </div>
             }/>
+            <Route exact path='/create' render={() =>
+              <div>
+              <NavBar
+              user={this.state.user}
+              handleLogout={this.handleLogout}/>
+              <QuestionForm/>
+
+              </div>
+              }/>
           <Route exact path='/signup' render={({ history }) => 
             <SignupPage
             history={history}

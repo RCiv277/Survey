@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 
 const formSchema = new mongoose.Schema({
     name: {type: String , maxlength: 30},
+    user: {},
+    hidden: {type: Boolean, default:false},
     question: {type:Array},
     answerA: {type:Array},
     answerB: {type:Array},
@@ -19,4 +21,4 @@ const formSchema = new mongoose.Schema({
     entriesQ10: {type:Object, default:{a:0 , b:0 , c:0 , d:0}},
 })
 
-module.exports = mongoose.model("form" , formSchema)
+module.exports = mongoose.model("Form" , formSchema)
