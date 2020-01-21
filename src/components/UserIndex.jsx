@@ -2,7 +2,7 @@ import React , {Component} from 'react'
 import { Link } from 'react-router-dom'
 import formService from '../utils/formService'
 
-class Catalog extends Component {
+class UserIndex extends Component {
     state={
         forms: [],
     }
@@ -10,7 +10,7 @@ class Catalog extends Component {
 
 
     async componentDidMount() {
-        const forms = await formService.index();
+        const forms = await formService.indexUser();
         this.setState({ forms });
     }
     render(){
@@ -26,4 +26,5 @@ class Catalog extends Component {
 }
 
 
-export default Catalog
+export default UserIndex
+

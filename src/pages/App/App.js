@@ -6,6 +6,8 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
 import QuestionForm from '../../components/QuestionForm';
+import Catalog from '../../components/Catalog'
+import UserIndex from '../../components/UserIndex'
 
 class App extends Component {
     state = {
@@ -20,6 +22,9 @@ class App extends Component {
     handleSignupOrLogin = () => {
       this.setState({user: userService.getUser()});
     }
+
+
+    
     render(){
       return(
         <div>
@@ -34,13 +39,33 @@ class App extends Component {
               
               </div>
             }/>
-            <Route exact path='/create' render={() =>
+            <Route exact path='/survey/create' render={({ history }) =>
+              <div>
+              <NavBar
+              history={history}
+              user={this.state.user}
+              handleLogout={this.handleLogout}/>
+              <QuestionForm/>
+              </div>
+              }/>
+            <Route exact path='/survey/index' render={() =>
               <div>
               <NavBar
               user={this.state.user}
               handleLogout={this.handleLogout}/>
-              <QuestionForm/>
+              <Catalog/>
 
+              </div>
+              }/>
+            <Route exact path='/survey/index/user' render={() =>
+              <div>
+              <NavBar
+              user={this.state.user}
+              handleLogout={this.handleLogout}/>
+              <UserIndex
+              user={this.state.user}
+              
+              />
               </div>
               }/>
           <Route exact path='/signup' render={({ history }) => 

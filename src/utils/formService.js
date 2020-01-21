@@ -1,13 +1,15 @@
 import tokenService from './tokenService';
 
-const BASE_URL = '/api/scores/';
+const BASE_URL = '/api/survey/';
 
 export default {
   index,
-  create
+  create,
+  indexUser,
 };
 
 function index() {
+  // return [{ name : 'Hiya'}]
   const options = {
     method: 'GET',
     headers: {
@@ -17,7 +19,18 @@ function index() {
   return fetch(BASE_URL, options).then(res => res.json());
 }
 
-function create(score) {
+function indexUser() {
+  // return [{ name : 'Hiya'}]
+  const options = {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  };
+  return fetch(BASE_URL + 'user', options).then(res => res.json());
+}
+
+function create(form) {
   const options = {
     method: 'POST',
     headers: {
@@ -25,8 +38,8 @@ function create(score) {
       // Add this header - don't forget the space after Bearer
       'Authorization': 'Bearer ' + tokenService.getToken()
     },
-    body: JSON.stringify(score)
+    body: JSON.stringify(form)
   };
-  return fetch(BASE_URL, options).then(res => res.json());
+  return fetch(BASE_URL + 'create', options).then(res => res.json());
 }
 
