@@ -6,6 +6,7 @@ export default {
   index,
   create,
   indexUser,
+  details
 };
 
 function index() {
@@ -43,3 +44,14 @@ function create(form) {
   return fetch(BASE_URL + 'create', options).then(res => res.json());
 }
 
+function details(){
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+      // Add this header - don't forget the space after Bearer
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  };
+  return fetch(BASE_URL, options).then(res => res.json());
+}

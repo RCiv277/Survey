@@ -17,13 +17,13 @@ class Catalog extends Component {
         return(
             <div>
                 {this.state.forms.map(form =>(
-                    <p>{form.name}</p>
+                <div>
+                <Link to={`/survey/${form._id}`} >{form.name}</Link>
+                </div>
                 ) )}
             </div>
         )
-    }
-    
+    }    
 }
-
 
 export default Catalog

@@ -20,6 +20,10 @@ const NavBar = (props) => {
       <Link to='/login'>LOG IN</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <Link to='/signup'>SIGN UP</Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <span >WELCOME, ANON</span>
+      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <Link to='/survey/index'>All SURVEYS</Link>
     </div>;
 
   return (

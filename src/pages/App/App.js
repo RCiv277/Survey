@@ -8,6 +8,7 @@ import userService from '../../utils/userService';
 import QuestionForm from '../../components/QuestionForm';
 import Catalog from '../../components/Catalog'
 import UserIndex from '../../components/UserIndex'
+import Questions from '../../components/Questions'
 
 class App extends Component {
     state = {
@@ -63,6 +64,17 @@ class App extends Component {
               user={this.state.user}
               handleLogout={this.handleLogout}/>
               <UserIndex
+              user={this.state.user}
+              
+              />
+              </div>
+              }/>
+            <Route path='/survey/:id' render={() =>
+              <div>
+              <NavBar
+              user={this.state.user}
+              handleLogout={this.handleLogout}/>
+              <Questions
               user={this.state.user}
               
               />

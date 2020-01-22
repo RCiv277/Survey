@@ -1,9 +1,11 @@
 import React , {Component} from 'react'
 import { Link } from 'react-router-dom'
+import formService from '../utils/formService'
 
 
 class Questions extends Component {
     state = {
+        question: 1,
         timeStarted: new Date(),
         questChange: [],
         answerChange: [],
@@ -16,7 +18,7 @@ class Questions extends Component {
             newLet: val,
             timeChanged: new Date()
         }
-        arry.push(newAnswer)
+        retArry.push(newAnswer)
         this.setState({answerChange : retArry})
     }
     handleQuestBttn(val){
@@ -25,11 +27,14 @@ class Questions extends Component {
     handleSubmit(val){
 
     }
-
+    async componentDidMount(){
+        const form = await formService.details()
+        this.setState({ form })
+    }
     render(){
         return(
             <div>
-
+                
             </div>
         )
     }

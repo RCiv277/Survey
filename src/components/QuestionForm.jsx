@@ -65,12 +65,9 @@ class QuestionForm extends Component {
     handleName = (e) => {
         this.setState({ name: e.target.value})
     }
-    handleSubmit = async (e) => {
-        
+    handleSubmit = async (e) => {       
             await formService.create(this.state)
-            this.props.history.push('/')
-            
-        
+            this.props.history.push('/')                    
     }
 
 

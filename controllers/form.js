@@ -29,7 +29,7 @@ async function createForm(req, res){
 }
 
 function detailsBasics(req, res){
-
+    
 }
 
 
