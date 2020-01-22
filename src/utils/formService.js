@@ -6,9 +6,21 @@ export default {
   index,
   create,
   indexUser,
-  details
+  details,
+  getForm,
+  createEntry,
 };
 
+function createEntry(entry) {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(entry)
+  };
+  return fetch(BASE_URL + 'entry', options).then(res => res.json());
+}
 function index() {
   // return [{ name : 'Hiya'}]
   const options = {
@@ -17,7 +29,7 @@ function index() {
       'Authorization': 'Bearer ' + tokenService.getToken()
     }
   };
-  return fetch(BASE_URL, options).then(res => res.json());
+  return fetch(BASE_URL).then(res => res.json());
 }
 
 function indexUser() {
@@ -27,7 +39,7 @@ function indexUser() {
     headers: {
       'Authorization': 'Bearer ' + tokenService.getToken()
     }
-  };
+  }
   return fetch(BASE_URL + 'user', options).then(res => res.json());
 }
 
@@ -54,4 +66,7 @@ function details(){
     }
   };
   return fetch(BASE_URL, options).then(res => res.json());
+}
+function getForm(){
+    return fetch(BASE_URL, {method: 'GET'}).then(res => res.json());
 }

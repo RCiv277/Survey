@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+mongoose.set('useFindAndModify', false)
+
 
 const formSchema = new mongoose.Schema({
     name: {type: String , maxlength: 30},

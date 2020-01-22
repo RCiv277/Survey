@@ -5,9 +5,10 @@ const entryCTRL = require('../../controllers/entry')
 router.use(require('../../config/auth'));
 
 router.post('/create' , formCTRL.createForm)
-router.get('/', checkAuth, formCTRL.formIndex)
+router.post('/entry' , entryCTRL.createEntry)
+router.get('/', formCTRL.formIndex)
 router.get('/user', checkAuth, formCTRL.userIndex)
-router.get('/:id', checkAuth, entryCTRL.entryForm)
+router.get('/:id', entryCTRL.entryForm)
 
 function checkAuth(req, res, next) {
     if (req.user) return next();

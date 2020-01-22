@@ -69,12 +69,13 @@ class App extends Component {
               />
               </div>
               }/>
-            <Route path='/survey/:id' render={() =>
+            <Route path='/survey/:id' render={({ history }) =>
               <div>
               <NavBar
               user={this.state.user}
               handleLogout={this.handleLogout}/>
               <Questions
+              history={history}
               user={this.state.user}
               
               />

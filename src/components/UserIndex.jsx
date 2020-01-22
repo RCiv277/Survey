@@ -11,6 +11,7 @@ class UserIndex extends Component {
 
     async componentDidMount() {
         const forms = await formService.indexUser();
+        forms.user = ''
         this.setState({ forms });
     }
     render(){
