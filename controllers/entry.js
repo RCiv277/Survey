@@ -141,6 +141,9 @@ async function createEntry(req, res){
         thisForm = form
     })
     await Form.findOneAndUpdate({formId: req.body.Id} , thisForm)
+    let entry = new Entry(newEntry)
+    await Entry.create(entry)
+    res.json('yo')
 }
 
 
