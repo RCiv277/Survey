@@ -26,7 +26,6 @@ app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname ,'build'))
 })
 
-// const port = process.env.port || 3020
-const port = process.env.port || 3000
+const port = process.env.port || 3020
 
 app.listen(port, ()=> console.log(`Express app running on port ${port}`))
