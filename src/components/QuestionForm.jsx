@@ -1,7 +1,17 @@
 import React , {Component} from 'react'
 import { Link , Redirect , withRouter} from 'react-router-dom'
 import formService from '../utils/formService' 
+import TextField from '@material-ui/core/TextField'
+import Input from '@material-ui/core/Input'
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import { sizing } from '@material-ui/system';
+import Grid from '@material-ui/core/Grid'
 
+let cardStyle = {
+    margin:'20px 20%',
+    width: '60%',
+}
 
 class QuestionForm extends Component {
     state = {
@@ -76,118 +86,111 @@ class QuestionForm extends Component {
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Name</label>
-                    <input type="text" onChange={this.handleName}/>
-                <div className='Question Card'>
-                    <ol>
-                        <label> Question One </label>
-                        <input type='text' name='q0' onChange={this.handleQuestion}/>
-                        <input type='text' name='q0a' onChange={this.handleAnswer}/>
-                        <input type='text' name='q0b' onChange={this.handleAnswer}/>
-                        <input type='text' name='q0c' onChange={this.handleAnswer}/>
-                        <input type='text' name='q0d' onChange={this.handleAnswer}/>
-                    </ol>
-                </div>
-                <div className='Question Card'>
-                    <ls>
-
-                        <label> Question Two </label>
-                        <input type='text' name='q1' onChange={this.handleQuestion}/>
-                        <input type='text' name='q1a' onChange={this.handleAnswer}/>
-                        <input type='text' name='q1b' onChange={this.handleAnswer}/>
-                        <input type='text' name='q1c' onChange={this.handleAnswer}/>
-                        <input type='text' name='q1d' onChange={this.handleAnswer}/>
-                    </ls>
-                </div>
-                <div className='Question Card'>
-                    <ls>
-                        <label> Question Three </label>
-                        <input type='text' name='q2' onChange={this.handleQuestion}/>
-                        <input type='text' name='q2a' onChange={this.handleAnswer}/>
-                        <input type='text' name='q2b' onChange={this.handleAnswer}/>
-                        <input type='text' name='q2c' onChange={this.handleAnswer}/>
-                        <input type='text' name='q2d' onChange={this.handleAnswer}/>
-                    </ls>
-                </div>
-                <div className='Question Card'>
-                    <ls>
-
-                        <label> Question Four </label>
-                        <input type='text' name='q3' onChange={this.handleQuestion}/>
-                        <input type='text' name='q3a' onChange={this.handleAnswer}/>
-                        <input type='text' name='q3b' onChange={this.handleAnswer}/>
-                        <input type='text' name='q3c' onChange={this.handleAnswer}/>
-                        <input type='text' name='q3d' onChange={this.handleAnswer}/>
-                    </ls>
-                </div>
-                <div className='Question Card'>
-                    <ls>
-
-                        <label> Question Five </label>
-                        <input type='text' name='q4' onChange={this.handleQuestion}/>
-                        <input type='text' name='q4a' onChange={this.handleAnswer}/>
-                        <input type='text' name='q4b' onChange={this.handleAnswer}/>
-                        <input type='text' name='q4c' onChange={this.handleAnswer}/>
-                        <input type='text' name='q4d' onChange={this.handleAnswer}/>
-                    </ls>
-                </div>
-                <div className='Question Card'>
-                    <ls>
-
-                        <label> Question Six </label>
-                        <input type='text' name='q5' onChange={this.handleQuestion}/>
-                        <input type='text' name='q5a' onChange={this.handleAnswer}/>
-                        <input type='text' name='q5b' onChange={this.handleAnswer}/>
-                        <input type='text' name='q5c' onChange={this.handleAnswer}/>
-                        <input type='text' name='q5d' onChange={this.handleAnswer}/>
-                    </ls>
-                </div>
-                <div className='Question Card'>
-                    <ls>
-
-                        <label> Question Seven </label>
-                        <input type='text' name='q6' onChange={this.handleQuestion}/>
-                        <input type='text' name='q6a' onChange={this.handleAnswer}/>
-                        <input type='text' name='q6b' onChange={this.handleAnswer}/>
-                        <input type='text' name='q6c' onChange={this.handleAnswer}/>
-                        <input type='text' name='q6d' onChange={this.handleAnswer}/>
-                    </ls>
-                </div>
-                <div className='Question Card'>
-                    <ls>
-
-                        <label> Question Eight </label>
-                        <input type='text' name='q7' onChange={this.handleQuestion}/>
-                        <input type='text' name='q7a' onChange={this.handleAnswer}/>
-                        <input type='text' name='q7b' onChange={this.handleAnswer}/>
-                        <input type='text' name='q7c' onChange={this.handleAnswer}/>
-                        <input type='text' name='q7d' onChange={this.handleAnswer}/>
-                    </ls>
-                </div>
-                <div className='Question Card'>
-                    <ls>
-
-                        <label> Question Nine </label>
-                        <input type='text' name='q8' onChange={this.handleQuestion}/>
-                        <input type='text' name='q8a' onChange={this.handleAnswer}/>
-                        <input type='text' name='q8b' onChange={this.handleAnswer}/>
-                        <input type='text' name='q8c' onChange={this.handleAnswer}/>
-                        <input type='text' name='q8d' onChange={this.handleAnswer}/>
-                    </ls>
-                </div>
-                <div className='Question Card'>
-                    <ls>
-
-                        <label> Question Ten </label>
-                        <input type='text' name='q9' onChange={this.handleQuestion}/>
-                        <input type='text' name='q9a' onChange={this.handleAnswer}/>
-                        <input type='text' name='q9b' onChange={this.handleAnswer}/>
-                        <input type='text' name='q9c' onChange={this.handleAnswer}/>
-                        <input type='text' name='q9d' onChange={this.handleAnswer}/>
-                    </ls>
-                </div>
-                    <input type='submit' value='Submit Your Survey'/>
-                    <Link to='/survey/index'> Check List</Link>
+                <Card style={cardStyle}><CardContent>
+                <Input placeholder='Name' inputProps={{ 'aria-label': 'description' }} onChange={this.handleName} />
+                </CardContent></Card>
+                <Card style={cardStyle} varient='outlined'>
+                  <CardContent style={{paddingRight: '400px'}}>
+                        <h5>Q1</h5>
+                        <Input placeholder='Question' name='q0' onChange={this.handleQuestion}/>
+                        <Input placeholder='Answer 1' name='q0a' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 2' name='q0b' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 3' name='q0c' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 4' name='q0d' onChange={this.handleAnswer}/>
+                  </CardContent>
+                </Card>
+                <Card style={cardStyle} varient='outlined'>
+                  <CardContent style={{paddingRight: '400px'}}>
+                        <h5>Q2</h5>
+                        <Input placeholder='Question' name='q1' onChange={this.handleQuestion}/>
+                        <Input placeholder='Answer 1' name='q1a' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 2' name='q1b' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 3' name='q1c' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 4' name='q1d' onChange={this.handleAnswer}/>
+                  </CardContent>
+                </Card>
+                <Card style={cardStyle} varient='outlined'>
+                  <CardContent style={{paddingRight: '400px'}}>
+                        <h5>Q3</h5>
+                        <Input placeholder='Question' name='q2' onChange={this.handleQuestion}/>
+                        <Input placeholder='Answer 1' name='q2a' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 2' name='q2b' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 3' name='q2c' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 4' name='q2d' onChange={this.handleAnswer}/>
+                  </CardContent>
+                </Card>
+                <Card style={cardStyle} varient='outlined'>
+                  <CardContent style={{paddingRight: '400px'}}>
+                        <h5>Q4</h5>
+                        <Input placeholder='Question' name='q3' onChange={this.handleQuestion}/>
+                        <Input placeholder='Answer 1' name='q3a' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 2' name='q3b' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 3' name='q3c' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 4' name='q3d' onChange={this.handleAnswer}/>
+                  </CardContent>
+                </Card>
+                <Card style={cardStyle} varient='outlined'>
+                  <CardContent style={{paddingRight: '400px'}}>
+                        <h5>Q5</h5>
+                        <Input placeholder='Question' name='q4' onChange={this.handleQuestion}/>
+                        <Input placeholder='Answer 1' name='q4a' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 2' name='q4b' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 3' name='q4c' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 4' name='q4d' onChange={this.handleAnswer}/>
+                  </CardContent>
+                </Card>
+                <Card style={cardStyle} varient='outlined'>
+                  <CardContent style={{paddingRight: '400px'}}>
+                        <h5>Q6</h5>
+                        <Input placeholder='Question' name='q5' onChange={this.handleQuestion}/>
+                        <Input placeholder='Answer 1' name='q5a' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 2' name='q5b' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 3' name='q5c' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 4' name='q5d' onChange={this.handleAnswer}/>
+                  </CardContent>
+                </Card>
+                <Card style={cardStyle} varient='outlined'>
+                  <CardContent style={{paddingRight: '400px'}}>
+                        <h5>Q7</h5>
+                        <Input placeholder='Question' name='q6' onChange={this.handleQuestion}/>
+                        <Input placeholder='Answer 1' name='q6a' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 2' name='q6b' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 3' name='q6c' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 4' name='q6d' onChange={this.handleAnswer}/>
+                  </CardContent>
+                </Card>
+                <Card style={cardStyle} varient='outlined'>
+                  <CardContent style={{paddingRight: '400px'}}>
+                        <h5>Q8</h5>
+                        <Input placeholder='Question' name='q7' onChange={this.handleQuestion}/>
+                        <Input placeholder='Answer 1' name='q7a' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 2' name='q7b' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 3' name='q7c' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 4' name='q7d' onChange={this.handleAnswer}/>
+                  </CardContent>
+                </Card>
+                <Card style={cardStyle} varient='outlined'>
+                  <CardContent style={{paddingRight: '400px'}}>
+                        <h5>Q9</h5>
+                        <Input placeholder='Question' name='q8' onChange={this.handleQuestion}/>
+                        <Input placeholder='Answer 1' name='q8a' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 2' name='q8b' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 3' name='q8c' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 4' name='q8d' onChange={this.handleAnswer}/>
+                  </CardContent>
+                </Card>
+                <Card style={cardStyle} varient='outlined'>
+                  <CardContent style={{paddingRight: '400px'}}>
+                        <h5>Q10</h5>
+                        <Input placeholder='Question' name='q9' onChange={this.handleQuestion}/>
+                        <Input placeholder='Answer 1' name='q9a' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 2' name='q9b' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 3' name='q9c' onChange={this.handleAnswer}/>
+                        <Input placeholder='Answer 4' name='q9d' onChange={this.handleAnswer}/>
+                        <Input type='submit' style={{marginTop:'10px',padding: '9px', border: '1px solid rgba(0, 0, 0, 0.23)',}} value='Submit Your Survey' />
+                  </CardContent>
+                </Card>
+    
                 </form>
             </div>
         )

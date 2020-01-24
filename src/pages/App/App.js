@@ -12,6 +12,7 @@ import QuestionForm from '../../components/QuestionForm';
 import Catalog from '../../components/Catalog'
 import UserIndex from '../../components/UserIndex'
 import Questions from '../../components/Questions'
+import ReviewRecr from '../../components/ReviewRecr'
 
 class App extends Component {
     state = {
@@ -68,7 +69,9 @@ class App extends Component {
                         </TypoGraphy>
                       </Toolbar>
                     </AppBar>
-              <QuestionForm/>
+              <QuestionForm
+              history={history}
+              />
               </div>
               }/>
             <Route exact path='/survey/index' render={({ history }) =>
@@ -132,7 +135,28 @@ class App extends Component {
               <Questions
               history={history}
               user={this.state.user}
-              
+              />
+              </div>
+            }/>
+            <Route path='/review/:id' render={({ history }) =>
+              <div>
+                    <AppBar color="primary" position="static">
+                      <Toolbar>
+                        <TypoGraphy variant="title"
+                        color="inherit"
+                        >
+                        Surveyor
+                        <NavBar
+                        history={history}
+                        dir={'Entry'}
+                        user={this.state.user}
+                        handleLogout={this.handleLogout}/>
+                        </TypoGraphy>
+                      </Toolbar>
+                    </AppBar>
+              <ReviewRecr
+              history={history}
+              user={this.state.user}
               />
               </div>
               }/>

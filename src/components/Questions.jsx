@@ -18,45 +18,7 @@ import TextField from '@material-ui/core/TextField'
 
 
 
-const styles = muiBaseTheme => ({
-  card: {
-    maxWidth: 300,
-    margin: "auto",
-    transition: "0.3s",
-    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
-    "&:hover": {
-      boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)"
-    }
-  },
-  media: {
-    paddingTop: "56.25%"
-  },
-  content: {
-    textAlign: "left",
-    padding: muiBaseTheme.spacing.unit * 3
-  },
-  divider: {
-    margin: `${muiBaseTheme.spacing.unit * 3}px 0`
-  },
-  heading: {
-    fontWeight: "bold"
-  },
-  subheading: {
-    lineHeight: 1.8
-  },
-  avatar: {
-    display: "inline-block",
-    border: "2px solid white",
-    "&:not(:first-of-type)": {
-      marginLeft: -muiBaseTheme.spacing.unit
-    },
-  test: {
-    textAlign: "center",
-  }
-  }
-});
-
-class Question extends Component{
+class Questions extends Component{
   state = {
     question: '',
     answerA: '',
@@ -74,7 +36,7 @@ handleAnswerBttn = (val) => {
     let newAnswer = {
         oldLet: this.state.answer[val.target.name[0]],
         newLet: val.target.name[1],
-        timeChanged: (this.state.timeStarted - new Date())/1000
+        timeChanged: (new Date() - this.state.timeStarted)/1000
     }
     let retAnswer = this.state.answer
     retAnswer[val.target.name[0]] = val.target.name[1]
@@ -89,8 +51,8 @@ handleQuestBttn = (val) => {
     let retArry = this.state.questChange
     let newQuest = {
         oldQuest: this.state.questIdx,
-        newQuest: val[1],
-        timeChanged:  (this.state.timeStarted - new Date())/1000
+        newQuest: Number(val[1]),
+        timeChanged:  (new Date() - this.state.timeStarted)/1000
     }
     let retQuest = Number(val[1])
     retArry.push(newQuest)
@@ -121,7 +83,7 @@ async componentDidMount(){
 }
 render() {
   return (
-      <div className="App">
+      <div className='App'>
       <Card className={"MuiEngagementCard--01"}>
       <CardContent className={"MuiTypography--heading"}>
       <Typography
@@ -141,9 +103,9 @@ render() {
       <FormControl component="fieldset">
       <RadioGroup aria-label="Quest" name="customized-radios">
       <FormControlLabel onChange={this.handleAnswerBttn} checked={this.state.answer[this.state.questIdx] === 'a'} classes={'test'} name={`${this.state.questIdx}a`} value={this.state.answerA[this.state.questIdx]} control={<Radio color="primary" classes={{ checked: 'test' }}/>} label={this.state.answerA[this.state.questIdx]} />
-      <FormControlLabel onChange={this.handleAnswerBttn} checked={this.state.answer[this.state.questIdx] === 'b'} classes={'test'} name={`${this.state.questIdx}b`} value={this.state.answerB[this.state.questIdx]} control={<Radio color="primary" classes={{ checked: 'test' }}/>} label={this.state.answerA[this.state.questIdx]} />
-      <FormControlLabel onChange={this.handleAnswerBttn} checked={this.state.answer[this.state.questIdx] === 'c'} classes={'test'} name={`${this.state.questIdx}c`} value={this.state.answerC[this.state.questIdx]} control={<Radio color="primary" classes={{ checked: 'test' }}/>} label={this.state.answerA[this.state.questIdx]} />
-      <FormControlLabel onChange={this.handleAnswerBttn} checked={this.state.answer[this.state.questIdx] === 'd'} classes={'test'} name={`${this.state.questIdx}d`} value={this.state.answerD[this.state.questIdx]} control={<Radio color="primary" classes={{ checked: 'test' }}/>} label={this.state.answerA[this.state.questIdx]} />
+      <FormControlLabel onChange={this.handleAnswerBttn} checked={this.state.answer[this.state.questIdx] === 'b'} classes={'test'} name={`${this.state.questIdx}b`} value={this.state.answerB[this.state.questIdx]} control={<Radio color="primary" classes={{ checked: 'test' }}/>} label={this.state.answerB[this.state.questIdx]} />
+      <FormControlLabel onChange={this.handleAnswerBttn} checked={this.state.answer[this.state.questIdx] === 'c'} classes={'test'} name={`${this.state.questIdx}c`} value={this.state.answerC[this.state.questIdx]} control={<Radio color="primary" classes={{ checked: 'test' }}/>} label={this.state.answerC[this.state.questIdx]} />
+      <FormControlLabel onChange={this.handleAnswerBttn} checked={this.state.answer[this.state.questIdx] === 'd'} classes={'test'} name={`${this.state.questIdx}d`} value={this.state.answerD[this.state.questIdx]} control={<Radio color="primary" classes={{ checked: 'test' }}/>} label={this.state.answerD[this.state.questIdx]} />
       </RadioGroup>
       </FormControl>
       {this.state.answer.every(e => e) ?
@@ -186,5 +148,4 @@ render() {
 // control={<RadioButton value="radioA" inputProps={{ 'aria-label': 'Radio A' }}/>}
 // control={<RadioButton value="radioA" inputProps={{ 'aria-label': 'Radio A' }}/>}
     
-  const Questions = withStyles(styles)(Question);
   export default Questions

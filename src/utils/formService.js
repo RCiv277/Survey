@@ -9,6 +9,7 @@ export default {
   details,
   getForm,
   createEntry,
+  getSixEntries,
 };
 
 function createEntry(entry) {
@@ -69,4 +70,7 @@ function details(){
 }
 function getForm(){
     return fetch(BASE_URL, {method: 'GET'}).then(res => res.json());
+}
+function getSixEntries(id){
+    return fetch(BASE_URL + id, {method: 'POST'}).then(res => res.json());
 }

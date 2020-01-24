@@ -9,6 +9,7 @@ router.post('/entry' , entryCTRL.createEntry)
 router.get('/', formCTRL.formIndex)
 router.get('/user', checkAuth, formCTRL.userIndex)
 router.get('/:id', entryCTRL.entryForm)
+router.post('/:id', entryCTRL.entryReview)
 
 function checkAuth(req, res, next) {
     if (req.user) return next();

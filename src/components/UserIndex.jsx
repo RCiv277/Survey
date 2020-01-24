@@ -18,7 +18,9 @@ class UserIndex extends Component {
         return(
             <div>
                 {this.state.forms.map(form =>(
-                    <p>{form.name}</p>
+                <div>
+                <Link to={`/review/${form._id}`} >{form.name}</Link>
+                </div>
                 ) )}
             </div>
         )

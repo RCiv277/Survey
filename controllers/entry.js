@@ -4,6 +4,7 @@ const Form = require('../model/form')
 module.exports = {
     entryForm,
     createEntry,
+    entryReview,
 }
 
 
@@ -148,10 +149,61 @@ async function createEntry(req, res){
 
 
 function entryForm(req, res){
+    console.log('Wait What')
     Form.findById(req.params.id, function(err, form){
         form[0].user = null
         res.json(form)
     })
+}
+
+async function entryReview(req, res){
+    let info = {}
+    await Form.findById(req.params.id, function(err, form){
+        info.formData = form
+    })
+    Entry.find({} , function(err, entries){
+        let entry = entries
+            .filter((a) => (a.formId !== req.paramsId))
+            .map((a) => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map((a) => a.value)
+        let sixEntries = [entry[0],entry[1],entry[2],entry[3],entry[4],entry[5]]
+
+        
+        let times = []
+        
+        
+        sixEntries.forEach( (ent , idx) => {
+            ent.changedAnswers.forEach(ans => {
+                ans.entry = idx
+                ans.type = 'a'
+                times.push({ time: ans})
+            })
+            ent.changedQuestions.forEach(ques => {
+                ques.entry = idx
+                ques.type = 'q'
+                times.push({ time: ques})
+            })
+        })
+        times.sort( (a , b) => {
+            if(a.time.timeChanged < b.time.timeChanged) return -1
+            if(a.time.timeChanged > b.time.timeChanged) return 1
+            return 0})
+             
+            let retInfo = {
+                question : info.formData.question,
+                answerA : info.formData.answerA, 
+                answerB : info.formData.answerB, 
+                answerC : info.formData.answerC, 
+                answerD : info.formData.answerD,
+                times: times}
+
+
+
+            console.log(times)
+            res.json(retInfo)
+    })
+    
 }
 
 
