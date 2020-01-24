@@ -198,9 +198,6 @@ async function entryReview(req, res){
                 answerD : info.formData.answerD,
                 times: times}
 
-
-
-            console.log(times)
             res.json(retInfo)
     })
     

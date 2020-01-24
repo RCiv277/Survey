@@ -57,7 +57,6 @@ class ReviewRecr extends Component{
     
     tick() {
         try{
-
             this.setState({time: this.state.time + 0.5})
             let entry = this.state.times
             if(this.state.time > entry[0].time.timeChanged){
@@ -105,6 +104,7 @@ class ReviewRecr extends Component{
             }
         } catch{
             clearInterval(this.timerID)
+            this.props.history.push('/')
         }
             
     

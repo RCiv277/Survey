@@ -1,6 +1,13 @@
 import React , {Component} from 'react'
 import { Link } from 'react-router-dom'
 import formService from '../utils/formService'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import TypoGraphy from '@material-ui/core/Typography'
+
+
+
+
 
 class UserIndex extends Component {
     state={
@@ -17,17 +24,17 @@ class UserIndex extends Component {
     render(){
         return(
             <div>
-                {this.state.forms.map(form =>(
-                <div>
-                <Link to={`/review/${form._id}`} >{form.name}</Link>
-                </div>
-                ) )}
+            {this.state.forms.map(form =>(
+                <ListItemText inset>
+                    <TypoGraphy color="inherit" variant="title">
+                       <Link to={`/review/${form._id}`}>{form.name}</Link>
+                    </TypoGraphy>
+                </ListItemText>
+            ))}
             </div>
         )
     }
-    
 }
-
 
 export default UserIndex
 
