@@ -28,4 +28,4 @@ app.get('/*', (req, res) => {
 
 const port = process.env.port || 3001
 
-app.listen(port, ()=> console.log(`Express app running on port ${port}`))
+app.listen(process.env.port || 3001, ()=> console.log(`Express app running on port ${port}`))
