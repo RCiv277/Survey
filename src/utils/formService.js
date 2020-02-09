@@ -24,12 +24,6 @@ function createEntry(entry) {
 }
 function index() {
   // return [{ name : 'Hiya'}]
-  const options = {
-    method: 'GET',
-    headers: {
-      'Authorization': 'Bearer ' + tokenService.getToken()
-    }
-  };
   return fetch(BASE_URL).then(res => res.json());
 }
 
