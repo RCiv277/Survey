@@ -23,9 +23,9 @@ app.use('/api/survey', require('./routes/api/survey'));
 
 
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname ,'build'))
+    res.sendFile(path.join(__dirname ,'build', 'index.html'))
 })
 
 const port = process.env.port || 3001
 
-app.listen(process.env.port || 3001, ()=> console.log(`Express app running on port ${port}`))
+app.listen(port, ()=> console.log(`Express app running on port ${port}`))
